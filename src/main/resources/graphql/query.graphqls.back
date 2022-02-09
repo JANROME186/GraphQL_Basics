@@ -1,0 +1,4 @@
+type Query {
+    personas(cantidad: Int): [Persona]
+    persona(id: ID): Persona
+}

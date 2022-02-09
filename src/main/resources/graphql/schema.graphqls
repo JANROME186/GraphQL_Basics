@@ -1,0 +1,24 @@
+schema {
+    query: Query
+    mutation: Mutation
+}
+
+type Persona {
+    id: Int!,
+    nombre: String!,
+    correo: String!,
+    apPat: String,
+    apMat: String,
+    fechaNacimiento: String
+}
+
+type Query {
+    getPersonas(cantidad: Int): [Persona]
+    getPersona(id: ID): Persona
+}
+
+type Mutation{
+    savePersona(nombre: String!, correo: String!, apPat: String, apMat: String, fechaNacimiento: String): Persona
+    updatePersona(id: ID!, nombre: String!, correo: String!, apPat: String, apMat: String, fechaNacimiento: String): Persona
+    deletePersona(id: ID!, nombre: String!, correo: String!, apPat: String, apMat: String, fechaNacimiento: String): Persona
+}

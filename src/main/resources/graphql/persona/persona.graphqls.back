@@ -1,0 +1,8 @@
+type Persona {
+    id: ID!,
+    nombre: String,
+    correo: String!,
+    apPat: String,
+    apMat: String,
+    fechaNacimiento: String
+}

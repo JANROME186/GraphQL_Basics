@@ -1,0 +1,8 @@
+type Mutation{
+    savePersona(nombre: String!, correo: String!,
+                apPat: String, apMat: String, fechaNacimiento: String):Persona
+    updatePersona(id: ID!, nombre: String!, correo: String!,
+                                 apPat: String, apMat: String, fechaNacimiento: String):Persona
+    deletePersona(id: ID!, nombre: String!, correo: String!,
+                                     apPat: String, apMat: String, fechaNacimiento: String):Persona
+}
