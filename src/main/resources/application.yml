@@ -5,4 +5,24 @@ spring:
 server:
   http2:
     enabled: true
+  port: 9095
 
+graphql:
+  voyager:
+    enable: true
+    basePath: /
+    mapping: /voyager
+    endpoint: /graphql
+    cdn:
+      enabled: false
+      version: lates
+    pageTitle: Voyager
+    displayOptions:
+      skipRelay: true
+      skipDeprecated: true
+      rootType: Query
+      sortByAlphabet: false
+      showLeaftFields: true
+      hideRoot: false
+    hideDocs: false
+    hideSettings: false

@@ -1,7 +1,9 @@
 package com.example.demo.resolver;
 
-import com.example.demo.model.Persona;
-import com.example.demo.services.IPersonaService;
+import com.example.demo.pojo.Catalog;
+import com.example.demo.pojo.CatalogValues;
+import com.example.demo.pojo.Metadata;
+import com.example.demo.services.ICatalogService;
 import graphql.kickstart.tools.GraphQLQueryResolver;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,15 +15,16 @@ import java.util.List;
 @Component
 public class Query implements GraphQLQueryResolver {
     @Autowired
-    IPersonaService personaService;
+    ICatalogService catalogService;
 
-    public Persona getPersona(Integer id){
-        log.info("Retrieving persona by id: {}", id);
-        return this.personaService.getPersonaById(id);
+    public List<CatalogValues> catalogs(Catalog catalogo){
+        log.info("Retrieving catalog by id: {}", catalogo);
+        return this.catalogService.getGatalog(catalogo);
     }
 
-    public List<Persona> getPersonas(Integer limit){
-        log.info("Reatriving all personas with pagination {}", limit);
-        return this.personaService.getPersonas(limit);
+    public Metadata metadata(Catalog catalogo){
+        log.info("Retrieving catalog metadata by id: {}", catalogo);
+        return this.catalogService.getMetadata(catalogo);
     }
+
 }

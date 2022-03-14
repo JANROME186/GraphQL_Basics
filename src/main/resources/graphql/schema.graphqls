@@ -1,24 +1,68 @@
-schema {
-    query: Query
-    mutation: Mutation
+enum ValueConditionType {
+    LKL,
+    LKR,
+    LK,
+    AND,
+    OR,
+    BWN,
+    IN,
+    GT,
+    LT,
+    EQ,
+    NEQ
 }
 
-type Persona {
-    id: Int!,
-    nombre: String!,
-    correo: String!,
-    apPat: String,
-    apMat: String,
-    fechaNacimiento: String
+enum ColumnConditionType {
+    AND,
+    OR
+}
+
+input Column {
+    valuesConditionType: ValueConditionType
+    columnName: String!
+    values: [String]!
+}
+
+input Condition {
+    columnsConditionType: ColumnConditionType
+    columns: [Column]!
+}
+
+input Catalog {
+    catalogId: String!
+    conditions: [Condition]
+}
+
+type Metadata {
+    catalogId: String
+    columns: [String]
+}
+
+type DescriptiveCatalog {
+    processDate: String,
+    id: String,
+    relCatId: String,
+    fullDesc: String,
+    shotDesc: String,
+    screenDesc: String,
+    abbreviation: String
+}
+
+type LegendCatalog {
+    processDate: String,
+    palabra: String,
+    ocupaci: String,
+    activid: String,
+    descrip: String,
+}
+
+union CatalogValues = DescriptiveCatalog | LegendCatalog
+
+schema {
+    query: Query
 }
 
 type Query {
-    getPersonas(cantidad: Int): [Persona]
-    getPersona(id: ID): Persona
-}
-
-type Mutation{
-    savePersona(nombre: String!, correo: String!, apPat: String, apMat: String, fechaNacimiento: String): Persona
-    updatePersona(id: ID!, nombre: String!, correo: String!, apPat: String, apMat: String, fechaNacimiento: String): Persona
-    deletePersona(id: ID!, nombre: String!, correo: String!, apPat: String, apMat: String, fechaNacimiento: String): Persona
+    catalogs(catalog: Catalog): [CatalogValues]
+    metadata(catalog: Catalog): Metadata
 }
