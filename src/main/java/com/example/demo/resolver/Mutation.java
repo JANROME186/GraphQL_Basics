@@ -1,8 +1,8 @@
 package com.example.demo.resolver;
 
+import com.coxautodev.graphql.tools.GraphQLMutationResolver;
 import com.example.demo.interfaces.IBuilderFunction;
 import com.example.demo.model.Persona;
-import graphql.kickstart.tools.GraphQLMutationResolver;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 

@@ -39,21 +39,21 @@ type Metadata {
 }
 
 type DescriptiveCatalog {
-    processDate: String,
-    id: String,
-    relCatId: String,
-    fullDesc: String,
-    shotDesc: String,
-    screenDesc: String,
+    processDate: String
+    id: String
+    relCatId: String
+    fullDesc: String
+    shotDesc: String
+    screenDesc: String
     abbreviation: String
 }
 
 type LegendCatalog {
-    processDate: String,
-    palabra: String,
-    ocupaci: String,
-    activid: String,
-    descrip: String,
+    processDate: String
+    palabra: String
+    ocupaci: String
+    activid: String
+    descrip: String
 }
 
 union CatalogValues = DescriptiveCatalog | LegendCatalog
@@ -63,6 +63,6 @@ schema {
 }
 
 type Query {
-    catalogs(catalog: Catalog): [CatalogValues]
-    metadata(catalog: Catalog): Metadata
+    catalogs(param: Catalog): [CatalogValues]
+    metadata(param: Catalog): Metadata
 }

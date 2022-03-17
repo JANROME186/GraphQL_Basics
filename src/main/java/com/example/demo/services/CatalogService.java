@@ -1,15 +1,12 @@
 package com.example.demo.services;
 
 import com.example.demo.interfaces.IBuilderFunction;
-import com.example.demo.model.Persona;
 import com.example.demo.pojo.Catalog;
 import com.example.demo.pojo.Metadata;
 import com.example.demo.repository.DescriptiveCatalogRepository;
 import com.example.demo.repository.LegendCatalogRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
