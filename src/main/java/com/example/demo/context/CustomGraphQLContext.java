@@ -1,18 +1,30 @@
 package com.example.demo.context;
 
-import graphql.servlet.GraphQLContext;
+import graphql.kickstart.execution.context.GraphQLContext;
+import graphql.kickstart.servlet.context.GraphQLServletContext;
+import graphql.kickstart.servlet.context.GraphQLServletContextBuilder;
 import lombok.Getter;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
+import org.dataloader.DataLoaderRegistry;
 
-import javax.servlet.http.HttpServletRequest;
+import javax.security.auth.Subject;
+import java.util.Optional;
 
 @Getter
-public class CustomGraphQLContext extends GraphQLContext {
+@RequiredArgsConstructor
+public class CustomGraphQLContext implements GraphQLContext {
 
-    private final String uuid;
+    private final String UUID;
+    private final GraphQLServletContext context;
 
-    public CustomGraphQLContext(String uuid, HttpServletRequest request){
-        super(request);
-        this.uuid = uuid;
+    @Override
+    public Optional<Subject> getSubject() {
+        return context.getSubject();
     }
 
+    @Override
+    public @NonNull DataLoaderRegistry getDataLoaderRegistry() {
+        return context.getDataLoaderRegistry();
+    }
 }
